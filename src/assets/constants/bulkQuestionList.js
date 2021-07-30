@@ -7,5 +7,10 @@ export const numericalQuestionList = [
     "If you were a hotdog, how long would you be",
     "If you could have any number of arms, what would you choose",
     "How many black t-shirts do you own",
-    "How many vowels are in your first name"
+    "How many vowels are in your first name",
+    "How many cats do you own",
+    "Which year is the best year (ad only)",
+    "Which year is the best year (bc only)",
+    "How many minutes do you wait on hold before hanging up",
+    "How many siblings do you have"
 ]
