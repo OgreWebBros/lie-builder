@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,kBAAkB,CAAA;EACd,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EACtB,IAAI,EAAC,QAAQ;EACb,eAAe,EAAE,YAAY;CAChC",
-    "sources": [
-        "question-section.scss"
-    ],
-    "names": [],
-    "file": "question-section.css"
-}

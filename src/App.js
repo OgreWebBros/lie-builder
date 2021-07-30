@@ -1,15 +1,18 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./styles/main.scss";
-import Header from "./packages/Header";
-import Content from "./packages/Content";
-import Footer from "./packages/Footer"
+import Lie from './components/lie'
+import Header from './components/header';
+import Footer from './components/footer';
+
+import './App.scss';
+
 
 function App() {
   return (
-    <div className="app">
+    <div class="app">
       <Header />
-      <Content />
+      <div id='stars' className="stars"></div>
+      <div id='stars2' className="stars"></div>
+      <Lie />
+      <div id='stars3' className="stars"></div>
       <Footer />
     </div>
   );

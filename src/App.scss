@@ -1,0 +1,14 @@
+@import './color-library.scss';
+.header, 
+.footer {
+  height: 50px;
+  background-color: var(--color-dark) ;
+}
+.app {
+  height: 100vh;
+  display: flex;  
+  background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+  /* Direction of the items, can be row or column */
+  flex-direction: column;
+}
+
