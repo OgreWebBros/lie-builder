@@ -9,10 +9,10 @@ function App() {
   return (
     <div class="app">
       <Header />
-      <div id='stars' className="stars"></div>
-      <div id='stars2' className="stars"></div>
+      <div className="motes motes--back"></div>
+      <div className="motes motes--mid"></div>
       <Lie />
-      <div id='stars3' className="stars"></div>
+      <div className="motes motes--front"></div>
       <Footer />
     </div>
   );

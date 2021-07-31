@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
-import './stars-background.scss';
+import './motes-background.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 

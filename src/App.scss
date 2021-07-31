@@ -1,8 +1,9 @@
 @import './color-library.scss';
+@import './spacing.scss';
 .header, 
 .footer {
   height: 50px;
-  background-color: var(--color-dark) ;
+  background-color: var(--palette-black) ;
 }
 .app {
   height: 100vh;

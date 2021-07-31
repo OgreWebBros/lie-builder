@@ -15,27 +15,53 @@
     font-weight: 300;
     font-size: 50px;
     letter-spacing: 10px;
-    background: -webkit-linear-gradient(white, #38495a);
+    background: -webkit-linear-gradient(white, var(--theme-dark));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
   &__tone{
     color: var(--theme-highlight-1);
-    background: -webkit-linear-gradient(var(--theme-highlight-1), var(--theme-dark));
+    background: -webkit-linear-gradient(var(--theme-tone), var(--theme-dark));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  &__character {
+  &__role{
     color:var(--theme-highlight-2);
-    background: -webkit-linear-gradient(var(--theme-highlight-2), var(--theme-dark));
+    background: -webkit-linear-gradient(var(--theme-role), var(--theme-dark));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
-  &__scenario{
+  &__scene{
     color:var(--theme-highlight-3);
-    background: -webkit-linear-gradient(var(--theme-highlight-3), var(--theme-dark));
+    background: -webkit-linear-gradient(var(--theme-scene), var(--theme-dark));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+  }
+  &__actions{
+    margin-top:var(--spacing-medium);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width:80%;
+  }
+  &__button {
+    display: block;
+    padding: var(--spacing-small);
+    margin: var(--spacing-small);
+    text-transform: uppercase;
+    min-width: 100px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    &--tone{
+      background: -webkit-linear-gradient(var(--theme-tone), var(--theme-dark));
+    }
+    &--role{
+      background-color: var(--theme-role);
+    }
+    &--scene{
+      background-color: var(--theme-scene);
+    }
   }
 }

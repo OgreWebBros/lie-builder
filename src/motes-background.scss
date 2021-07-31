@@ -1,0 +1,63 @@
+
+@function multiple-box-shadow($amountOfMotes) {
+  $value: "#{random(2000)}px #{random(2000)}px #FFFFFF";
+  @for $i from 2 through $amountOfMotes {
+    $value: "#{$value} , #{random(2000)}px #{random(2000)}px #FFFFFF";
+  }
+  @return unquote($value);
+}
+
+@mixin motes($size) {
+  opacity: 0.8;
+  filter: blur(0.5px);
+  $motesSizeMultiplier: 1;
+  @if $size == medium {
+    $motesSizeMultiplier: 3;
+  }
+  @if $size == large {
+    $motesSizeMultiplier: 5;
+  }
+  width: #{$motesSizeMultiplier}px;
+  height: #{$motesSizeMultiplier}px;
+  background: transparent;
+  box-shadow: $shadows-small;
+  animation: animMote 50s linear infinite;
+  border-radius: #{$motesSizeMultiplier}px;
+  &:after {
+    content: " ";
+    position: absolute;
+    top: 2000px;
+    background: transparent;
+    border-radius: #{$motesSizeMultiplier}px;
+    width: #{$motesSizeMultiplier}px;
+    height: #{$motesSizeMultiplier}px;
+    box-shadow: $shadows-small;
+  }
+}
+
+$shadows-small: multiple-box-shadow(1000);
+$shadows-medium: multiple-box-shadow(300);
+$shadows-large: multiple-box-shadow(100);
+
+.motes {
+  @include motes(small);
+  &--mid {
+    @include motes(medium);
+    animation: animMote 100s linear infinite;
+    box-shadow: $shadows-medium;
+  }
+  &--front {
+    @include motes(large);
+    animation: animMote 150s linear infinite;
+    box-shadow: $shadows-large;
+  }
+}
+
+@keyframes animMote {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-2000px);
+  }
+}
