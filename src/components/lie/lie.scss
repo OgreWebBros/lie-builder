@@ -18,6 +18,10 @@
     background: -webkit-linear-gradient(white, var(--theme-dark));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    @media screen and (max-width: 800px) {
+      font-size: 30px;
+    }
+  
   }
   &__tone{
     color: var(--theme-highlight-1);

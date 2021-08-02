@@ -7,6 +7,7 @@
 }
 
 @mixin motes($size) {
+  position: relative;
   opacity: 0.8;
   filter: blur(0.5px);
   $motesSizeMultiplier: 1;
@@ -22,7 +23,7 @@
   box-shadow: $shadows-small;
   animation: animMote 50s linear infinite;
   border-radius: #{$motesSizeMultiplier}px;
-  &:after {
+  &:before {
     content: " ";
     position: absolute;
     top: 2000px;
@@ -32,6 +33,7 @@
     height: #{$motesSizeMultiplier}px;
     box-shadow: $shadows-small;
   }
+
 }
 
 $shadows-small: multiple-box-shadow(1000);
