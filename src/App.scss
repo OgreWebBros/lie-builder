@@ -1,12 +1,21 @@
 @import './color-library.scss';
 @import './spacing.scss';
-.header, 
+
+//Elements
+@import './components/button/button.scss';
+
+//Components 
+@import './components/header/header.scss';
+@import './components/lie/lie.scss';
+
+
 .footer {
   height: 50px;
   background-color: var(--palette-black) ;
 }
 .app {
   height: 100vh;
+  overflow:hidden;
   display: flex;  
   background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
   /* Direction of the items, can be row or column */

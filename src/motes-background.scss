@@ -1,4 +1,3 @@
-
 @function multiple-box-shadow($amountOfMotes) {
   $value: "#{random(2000)}px #{random(2000)}px #FFFFFF";
   @for $i from 2 through $amountOfMotes {

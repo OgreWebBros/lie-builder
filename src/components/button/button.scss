@@ -1,0 +1,18 @@
+.button,
+[class*="__button"] {
+    display: flex;
+    padding: var(--spacing-small);
+    margin: var(--spacing-small);
+    text-transform: uppercase;
+    min-width: 100px;
+    outline: none;
+    border: 2px solid var(--theme-light);
+    color: var(--theme-light);
+    background-color: transparent;
+    border-radius: 5px;
+    transition: 500ms;
+    &:hover {
+        transform: scale(1.1);
+      
+    }
+}

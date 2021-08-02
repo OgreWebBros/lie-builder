@@ -46,22 +46,17 @@
     width:80%;
   }
   &__button {
-    display: block;
-    padding: var(--spacing-small);
-    margin: var(--spacing-small);
-    text-transform: uppercase;
-    min-width: 100px;
-    outline: none;
-    border: none;
-    border-radius: 5px;
     &--tone{
-      background: -webkit-linear-gradient(var(--theme-tone), var(--theme-dark));
+      border-color: var(--theme-tone);
+      color: var(--theme-tone);
     }
     &--role{
-      background-color: var(--theme-role);
+      border-color: var(--theme-role);
+      color: var(--theme-role);
     }
     &--scene{
-      background-color: var(--theme-scene);
+      border-color: var(--theme-scene);
+      color: var(--theme-scene);
     }
   }
 }

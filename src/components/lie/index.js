@@ -1,23 +1,35 @@
-import './lie.scss';
-const Lie = () => {
+import { useState } from 'react'
+import Button from '../button'
 
+import roles from '../../constants/roles';
+import scenes from '../../constants/scenes';
+import tones from '../../constants/tones'
+import getRandomArrayEntry from '../../helpers/getRandomIndex';
+
+const Lie = () => {
+    const randomLie = {
+        tone:getRandomArrayEntry(tones), 
+        role:getRandomArrayEntry(roles), 
+        scene:getRandomArrayEntry(scenes)
+    }
+    const [lie, setLie] = useState(randomLie);
+    const block = 'lie'
     return (
         <div className="lie__wrapper">
             <div className="lie">
                 <span className="lie__copy">
                     You are a<nbsp />
-                    <span className="lie__tone"> fawning </span>
-                    <span className="lie__role">noble </span>
+                    <span className="lie__tone"> {lie.tone}</span>
+                    <span className="lie__role"> {lie.role} </span>
                     who
-                    <span className="lie__scene"> wants to buy this whole building</span>
+                    <span className="lie__scene"> {lie.scene}</span>
                     .
                 </span>
                 <div className="lie__actions">
-                    <button className="lie__button lie__button--tone">tone</button>
-                    <button className="lie__button lie__button--role">role</button>
-                    <button className="lie__button lie__button--scene">scene</button>
-                    <button className="lie__button">whole</button>
-                    <button className="lie__button">filter</button>
+                    <Button block={block} modifier={["tone"]} text="tone" action={()=>{setLie({...lie, tone: getRandomArrayEntry(tones)})}}/>
+                    <Button block={block} modifier={["role"]}  text="role" action={()=>{setLie({...lie, role: getRandomArrayEntry(roles)})}}/>
+                    <Button block={block} modifier={["scene"]}  text="scene" action={()=>{setLie({...lie, scene: getRandomArrayEntry(scenes)})}}/>
+                    <Button block={block} text="all" action={()=>{setLie(randomLie)}}/>
                 </div>
             </div>
         </div>
