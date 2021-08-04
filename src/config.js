@@ -1,4 +1,4 @@
-export const firebaseConfig = {
+const firebaseConfig = {
     apiKey: "AIzaSyDLhF6Cvyh2BMPeDcHe5JJCiYe8JUVt1Cc",
     authDomain: "lie-builder.firebaseapp.com",
     projectId: "lie-builder",
@@ -7,3 +7,4 @@ export const firebaseConfig = {
     appId: "1:188809832678:web:31773ff4cecb52c3af7327",
     measurementId: "G-ZV9PG604SX"
   };
+  export default firebaseConfig;

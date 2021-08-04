@@ -2,7 +2,6 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import firebaseConfig from './config.js';
 
-
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 let db = firebase.firestore();
 
@@ -10,8 +9,15 @@ let db = firebase.firestore();
 // Email auth stuff 
 
 
-
-
+const asyncGetLieDetails = async () => {
+  const { docs } = await db.collection('lieData').get();
+  console.log("fb action",...docs.map((lie) => ({
+    ...lie.data()
+  })))
+  return docs.map((lie) => ({
+    ...lie.data()
+  }));
+}
 /* 
 
 const addPreference = (newPreference, friend) => {
@@ -61,4 +67,5 @@ const asyncGetFriends = async () => {
 export {
     firebaseApp,
     db,
+    asyncGetLieDetails
 };
