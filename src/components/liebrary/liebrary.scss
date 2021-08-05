@@ -1,5 +1,9 @@
 .liebrary {
-    color:var(--theme-light);   
+    color:var(--theme-light);
+    padding: var(--spacing-small) var(--spacing-large);  
+    width:50%;
+    max-width: 800px;
+    min-width:200px;
     &__title {
         margin-bottom:var(--spacing-small);
         &--tones {
@@ -48,5 +52,19 @@
         margin-top: 0;
         list-style-type: none;
         padding-left:0;
+    }
+    &__detail {
+        display:flex;
+        align-items: center;
+        margin-bottom: var(--spacing-small);
+        &-text{
+            margin-right: var(--spacing-small);
+        }
+        .liebrary__button {
+            padding: 0px 2px;
+            min-width: 0;
+            margin: 0;
+            flex-shrink: 0;
+        }
     }
 }

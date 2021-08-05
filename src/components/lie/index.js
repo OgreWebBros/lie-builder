@@ -8,21 +8,55 @@ const Lie = () => {
     const blankLie = {
         tone:"_______",
         role:"_______",
-        scene:"_____________________" 
+        scene:"_____________________" ,
+        indefinateArticle: " a"
     }
     const [lieDetails, setLieDetails] = useState();
     const [lie, setLie] = useState(blankLie);
 
+    const getCorrectArticle = (followingWord) => {
+        const vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"];
+        const wordStartsWithAVowel = vowels.includes(followingWord[0]);
+        const article = wordStartsWithAVowel ? " an" : " a";
+        return  article
+    }
     const getFreshLie = useCallback(
         () => {
-            return {
+            const freshLie = {
                 tone:getRandomArrayEntry(lieDetails.tones), 
                 role:getRandomArrayEntry(lieDetails.roles), 
                 scene:getRandomArrayEntry(lieDetails.scenes) 
             }
+            
+            return {
+                ...freshLie,
+                indefinateArticle:  getCorrectArticle(freshLie.tone) 
+            }
         },[lieDetails]
     )
-
+    
+    const setRandomTone = () => {
+        const freshTone = getRandomArrayEntry(lieDetails.tones)
+        setLie ({
+            ...lie,
+            tone: freshTone,
+            indefinateArticle: getCorrectArticle(freshTone)
+        })
+    }
+    const setRandomRole = () => {
+        const freshRole = getRandomArrayEntry(lieDetails.roles)
+        setLie ({
+            ...lie,
+            role: freshRole
+        })
+    }
+    const setRandomScene = () => {
+        const freshScene = getRandomArrayEntry(lieDetails.scenes)
+        setLie ({
+            ...lie,
+            scene: freshScene,
+        })
+    }
     useEffect(() => {
         (async () => {
           const incomingLieDetails = await asyncGetLieDetails();
@@ -35,21 +69,19 @@ const Lie = () => {
         setLie(getFreshLie())} 
     }, [lieDetails, getFreshLie])
 
-
-      console.log("in lie", lieDetails)
- 
     const block = 'lie'
     return (
         <div className="lie__wrapper content__wrapper">
             <div className="lie">
             <div className="lie__actions">
-                    <Button block={block} modifier={["tone"]} text="tone" action={()=>{setLie({...lie, tone: getRandomArrayEntry(lieDetails.tones)})}}/>
-                    <Button block={block} modifier={["role"]}  text="role" action={()=>{setLie({...lie, role: getRandomArrayEntry(lieDetails.roles)})}}/>
-                    <Button block={block} modifier={["scene"]}  text="scene" action={()=>{setLie({...lie, scene:getRandomArrayEntry(lieDetails.scenes)})}}/>
+                    <Button block={block} modifier={["tone"]} text="tone" action={()=>{setRandomTone()}}/>
+                    <Button block={block} modifier={["role"]}  text="role" action={()=>{setRandomRole()}}/>
+                    <Button block={block} modifier={["scene"]}  text="scene" action={()=>{setRandomScene()}}/>
                     <Button block={block} text="all" action={()=>{setLie(getFreshLie())}}/>
                 </div>
                 <span className="lie__copy">
-                    You are a 
+                    You are  
+                    {lie.indefinateArticle}
                     <span className="lie__tone"> {lie.tone}</span>
                     <span className="lie__role"> {lie.role} </span>
                     who

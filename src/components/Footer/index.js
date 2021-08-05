@@ -1,5 +1,4 @@
-import { Link, NavLink } from 'react-router-dom';
-import Button from '../button';
+import { NavLink } from 'react-router-dom';
 
 const Footer = () => (
     <div className="footer">

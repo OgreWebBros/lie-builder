@@ -11,9 +11,6 @@ let db = firebase.firestore();
 
 const asyncGetLieDetails = async () => {
   const { docs } = await db.collection('lieData').get();
-  console.log("fb action", ...docs.map((lie) => ({
-    ...lie.data()
-  })))
   return docs.map((lie) => ({
     ...lie.data()
   }));

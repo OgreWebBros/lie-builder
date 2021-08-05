@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import Button from "../button";
 import { createPortal } from "react-dom";
 const Portal = ({ children }) => {
     const modalRoot = document.getElementById("modal");
@@ -12,19 +13,22 @@ const Portal = ({ children }) => {
     });
     return createPortal(children, el);
 };
-const Modal = ({ children, toggle, open }) => (
+const bemDetails = {
+    block: "modal",
+}
+const Modal = ({ children, toggle, open }) => {
+    return(
     <Portal>
         {open && (
             <div className="modal__wrapper">
                 <div className="modal__card">
-                    <button className="modal__close-button material material-black" onClick={toggle}>
-                        X
-                    </button>
+                <Button   {...bemDetails} text="&#10006;" modifier={["small", "close"]} action={()=>{toggle()}}/>
                     {children}
                 </div>
                 <div className="modal__background" onClick={toggle} />
             </div>
         )}
     </Portal>
-);
+)
+};
 export default Modal; 

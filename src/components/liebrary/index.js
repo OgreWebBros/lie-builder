@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect} from 'react'
 
 import { addDetail, deleteDetail, asyncGetLieDetails } from '../../firebaseActions';
 import bemBuilder from '../../helpers/bemBuilder';
@@ -7,7 +7,6 @@ import Button from '../button'
 import Modal from '../modal'
 
 const Liebrary = () => {
-
     const blankLieDetails = {
         roles: ["_____"],
         tones: ["_____"],
@@ -31,11 +30,12 @@ const Liebrary = () => {
 
     const setClientLies = (type, detail, updateType) => {
         let newLies = lieDetails
-        if(updateType==="add") {
+        if (updateType === "add") {
             newLies[type].push(detail)
         } else {
             newLies[type] = newLies[type].filter(word => word !== detail);
         }
+
         setLieDetails(
             newLies
         )
@@ -45,6 +45,8 @@ const Liebrary = () => {
         if (!lieDetails[type].includes(detail)) {
             setClientLies(type, detail, 'add');
             addDetail(type, detail)
+        } else if (!detail && detail === "") {
+            alert("You got to enter something at least")
         } else {
             alert("already got it");
         }
@@ -55,12 +57,24 @@ const Liebrary = () => {
         deleteDetail(type, detail);
     }
 
+
+    const closeModalandCleanUp = () =>{
+        setModalState({ open: false });
+       // setNewDetail();
+    }
+
     const AddDetailAndCloseModal = (type, detail) => {
         addLieDetail(type, detail);
         setModalState({ open: false });
+        closeModalandCleanUp();
     }
 
 
+
+    const removeDetailAndCloseModal = (type, detail) => {
+        removeLieDetail(type, detail, 'remove');
+        setModalState({ open: false });
+    }
 
     const getDetails = (type) => {
         const bemDetails = {
@@ -74,7 +88,7 @@ const Liebrary = () => {
                     <Button
                         {...bemDetails}
                         action={() => {
-                            setModalState({ type: type, open: "true" })
+                            cueAddModal(type)
                         }}
                         text="add" />
                 </div>
@@ -82,7 +96,8 @@ const Liebrary = () => {
                 <ul className={bemBuilder({ ...bemDetails, element: "list" })}>
                     {lieDetails[type].map((detail, index) => (
                         <li className={bemBuilder({ ...bemDetails, element: "detail" })} key={`${type}-${index}`}>
-                            {detail}
+                            <span className={bemBuilder({ ...bemDetails, element: "detail-text" })}>{detail}</span>
+                            <Button   {...bemDetails} text="&#10006;" modifier={["small", type]} action={()=>{cueDeleteModal(type, detail)}}/>
                         </li>
                     ))}
                 </ul>
@@ -90,11 +105,48 @@ const Liebrary = () => {
         )
     }
 
+
+    const cueDeleteModal = (type, detail) => {
+        setModalState({
+            open: true,
+            contents: <RemoveModal type={type} detail={detail}/>,
+            type: type,
+            targetDetail: detail
+        })
+    }
+  
+
+    const cueAddModal = (type) => {
+        setModalState({
+            open: true,
+            contents: <AddModal type={type}/>,
+            type: type
+        })
+   
+    }
+
+    const AddModal = ({type}) => (
+        <>
+        <p className="modal__text"> Add to <span className={`modal__text--${type}`}>{type}</span></p>
+        <input className="modal__input" id={`${type}-input}`} type="text" />
+      {/*    Need to refactor this getElementById but am lazy */}
+         <Button block="modal"  text="add it" action={() => { AddDetailAndCloseModal(type, document.getElementById(`${type}-input}`).value)}} />
+     </>
+    )
+
+    const RemoveModal = ({type, detail}) => (
+        <>
+      
+            <p className="modal__text"> You sure you want to remove <span className={`modal__text--${type}`}>{detail}</span> from <span className={`modal__text--${type}`}>{type}</span>? </p>
+            <Button block="modal" text="remove it" action={() => { removeDetailAndCloseModal(type, detail); }} />
+    
+         </>
+    ) 
+
     const block = 'liebrary'
     return (
         <>
             <div className="lie__wrapper content__wrapper">
-                <button className="button material material-black" onClick={() => { removeLieDetail("tones", "test") }}>delete test from tones</button>
                 <div className={block}>
                     {getDetails("tones")}
                     {getDetails("roles")}
@@ -102,9 +154,8 @@ const Liebrary = () => {
                 </div>
             </div>
             {modalState.open &&
-                <Modal open={modalState} toggle={() => { setModalState({ open: false }) }}>
-                    <p> I am a {modalState.type} modal babbbeeee</p>
-                    <Button text="add" action={() => { AddDetailAndCloseModal(modalState.type, "test"); }} />
+                <Modal open={modalState.open} toggle={() => {closeModalandCleanUp()}}>
+                    { modalState.contents}
                 </Modal>}
         </>
     )

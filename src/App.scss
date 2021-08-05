@@ -17,7 +17,7 @@
   background-color: var(--palette-black) ;
 }
 .app {
-  height: 100vh;
+  min-height: 100vh;
   overflow:hidden;
   display: flex;  
   background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
@@ -31,6 +31,7 @@
     align-items: center;
     justify-content: center;
     height: 100%;
+    overflow: auto;
   }
 }
 
