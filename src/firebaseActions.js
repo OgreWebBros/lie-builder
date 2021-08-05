@@ -32,8 +32,16 @@ const addDetail = (type, detail) => {
 
 };
 
-const deleteDetail = (id) => {
-  db.collection("friends").doc(id).delete()
+const deleteDetail = (type, detail) => {
+  var liesRef = db.collection('lieData');
+  var typeDocRef = liesRef.doc('lies');
+  typeDocRef.get().then(function (doc) {
+    liesRef.doc('lies').update({
+      [`${type}`]: firebase.firestore.FieldValue.arrayRemove(detail)
+    });
+  }).catch(function (error) {
+    console.log('Error getting document:', error);
+  });
 }
 
 
@@ -41,5 +49,6 @@ export {
   firebaseApp,
   db,
   addDetail,
+  deleteDetail,
   asyncGetLieDetails
 };

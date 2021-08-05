@@ -7,7 +7,7 @@
 }
 
 @mixin motes($size) {
-  position: relative;
+
   opacity: 0.8;
   filter: blur(0.5px);
   $motesSizeMultiplier: 1;
