@@ -1,0 +1,52 @@
+.liebrary {
+    color:var(--theme-light);   
+    &__title {
+        margin-bottom:var(--spacing-small);
+        &--tones {
+            color:var(--theme-tone)
+        }
+        &--roles {
+            color:var(--theme-role)
+        }
+        &--scenes {
+            color:var(--theme-scene)
+        }
+    }
+    &__title-bar {
+        margin-bottom: var(--spacing-small);
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 2px solid;
+        width:100%;
+        &--tones{
+            border-color: var(--theme-tone);
+        }
+        &--roles{
+            border-color: var(--theme-role);
+        }
+        &--scenes{
+            border-color: var(--theme-scene);
+        }
+    }
+    &__button {
+        margin-bottom: 0;
+        &--tones{
+            color: var(--theme-tone);
+            border-color: var(--theme-tone);
+        }
+        &--roles{
+            color: var(--theme-role);
+            border-color: var(--theme-role);
+        }
+        &--scenes{
+            color: var(--theme-scene);
+            border-color: var(--theme-scene);
+        }
+    }
+    &__list {
+        margin-top: 0;
+        list-style-type: none;
+        padding-left:0;
+    }
+}

@@ -11,61 +11,35 @@ let db = firebase.firestore();
 
 const asyncGetLieDetails = async () => {
   const { docs } = await db.collection('lieData').get();
-  console.log("fb action",...docs.map((lie) => ({
+  console.log("fb action", ...docs.map((lie) => ({
     ...lie.data()
   })))
   return docs.map((lie) => ({
     ...lie.data()
   }));
 }
-/* 
 
-const addPreference = (newPreference, friend) => {
-  //Add pref to Friend
-  var friendsRef = db.collection('lieData');
-  var friendDocRef = friendsRef.doc(friendDocId);
-  friendDocRef.get().then(function (doc) {
-      friendsRef.doc(friendDocId).update({  
-        [`responses.${newPreference.category}.items`]: firebase.firestore.FieldValue.arrayUnion(newPreference.value)
-      });
+const addDetail = (type, detail) => {
+  var liesRef = db.collection('lieData');
+  var typeDocRef = liesRef.doc('lies');
+  typeDocRef.get().then(function (doc) {
+    liesRef.doc('lies').update({
+      [`${type}`]: firebase.firestore.FieldValue.arrayUnion(detail)
+    });
   }).catch(function (error) {
     console.log('Error getting document:', error);
   });
-  //add Prefrence to Preference collection
-  const prefDocId = newPreference.value;
-  var prefRef = db.collection('preferences');
-  var newPrefDocRef = prefRef.doc(prefDocId);
-  newPrefDocRef.get().then(function (doc) {
-    if (!doc.exists) {
-        prefRef.doc(prefDocId).set({
-        [`${newPreference.category}.items`]: blankResponses
-      });}
-  
-    prefRef.doc(prefDocId).update({
-      [`${newPreference.category}.items`]: firebase.firestore.FieldValue.arrayUnion(friendDocId)
-    });
-  
-    }).catch(function (error) {
-      console.log('Error getting document:', error);
-    });
 
 };
 
-const deleteFriend = (id) =>{
+const deleteDetail = (id) => {
   db.collection("friends").doc(id).delete()
 }
 
-const asyncGetFriends = async () => {
-  const { docs } = await db.collection('friends').get();
-  return docs.map((friend) => ({
-    ...friend.data(),
-    id: friend.id,
-  }));
-}
- */
 
 export {
-    firebaseApp,
-    db,
-    asyncGetLieDetails
+  firebaseApp,
+  db,
+  addDetail,
+  asyncGetLieDetails
 };

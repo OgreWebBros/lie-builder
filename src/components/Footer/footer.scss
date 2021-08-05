@@ -1,0 +1,19 @@
+.footer {
+    padding: var(--spacing-small);
+    background-color: var(--palette-black);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    &__link {
+        text-transform: uppercase;
+        color: var(--theme-light);
+        margin: 0 var(--spacing-small);
+        text-decoration: none;
+        &.active {
+            opacity: 50%;
+            &:hover {
+                transform: none;
+            }
+        }
+    }
+}

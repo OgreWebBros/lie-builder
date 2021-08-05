@@ -1,6 +1,5 @@
 import { useState, useEffect, useCallback} from 'react'
 import Button from '../button'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import getRandomArrayEntry from '../../helpers/getRandomIndex';
 import { asyncGetLieDetails } from '../../firebaseActions';
 
@@ -41,7 +40,7 @@ const Lie = () => {
  
     const block = 'lie'
     return (
-        <div className="lie__wrapper">
+        <div className="lie__wrapper content__wrapper">
             <div className="lie">
             <div className="lie__actions">
                     <Button block={block} modifier={["tone"]} text="tone" action={()=>{setLie({...lie, tone: getRandomArrayEntry(lieDetails.tones)})}}/>
