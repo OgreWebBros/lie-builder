@@ -19,7 +19,7 @@ function App() {
       <div className="motes motes--mid"/>
       <Switch>
             <Route path="/liebrary" render={() => <Liebrary/>}/>
-            <Route exact path="/" render={() => <Lie />}/>
+            <Route exact path="/lie-builder" render={() => <Lie />}/>
         </Switch>
       <div className="motes motes--front"/>
       <Footer />

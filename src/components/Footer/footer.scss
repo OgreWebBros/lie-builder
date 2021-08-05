@@ -1,16 +1,21 @@
 .footer {
     padding: var(--spacing-small);
-    background-color: var(--palette-black);
-    display: flex;
+    background-color: rgba(0,0,0,.5);
+    position: fixed;
+    display:flex;
+    width:100%;
+    bottom: 0;
     align-items: center;
     justify-content: flex-end;
+
     &__link {
         text-transform: uppercase;
         color: var(--theme-light);
-        margin: 0 var(--spacing-small);
+        margin-right: var(--spacing-large);
         text-decoration: none;
+        display: block;
         &.active {
-            opacity: 50%;
+            display:none;
             &:hover {
                 transform: none;
             }
