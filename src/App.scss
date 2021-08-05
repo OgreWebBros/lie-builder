@@ -29,6 +29,8 @@
     justify-content: center;
     height: 100%;
     overflow: auto;
+        //accounts for fixed footer
+        padding-bottom: 70px;
   }
 }
 
