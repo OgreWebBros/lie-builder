@@ -4,6 +4,8 @@
     width:50%;
     max-width: 800px;
     min-width:200px;
+    //accounts for fixed footer
+    padding-bottom: 70px;
     &__title {
         margin-bottom:var(--spacing-small);
         &--tones {
