@@ -1,12 +1,23 @@
 .footer {
+    &__wrapper {
+        position: fixed;
+        width:100%;
+        background-color: rgba(0,0,0,.5);  
+        bottom: 0;   
+    }
     padding: var(--spacing-small);
-    background-color: rgba(0,0,0,.5);
-    position: fixed;
+ 
     display:flex;
-    width:100%;
-    bottom: 0;
+  
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
+    width:100%;
+    max-width:1200px;
+    margin: 0 auto;
+    &__gh-logo {
+        fill: var(--theme-light);
+        margin: 0 var(--spacing-small);
+    }
 
     &__link {
         text-transform: uppercase;
@@ -20,5 +31,13 @@
                 transform: none;
             }
         }
+        @media  only screen and (max-width:350px) {
+            margin-right: 0;
+        }
+    }
+    @media  only screen and (max-width:350px) {
+        flex-direction: column-reverse;
+       padding:0;
+        justify-content: center;
     }
 }
