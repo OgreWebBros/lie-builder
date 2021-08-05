@@ -12,14 +12,14 @@ import './App.scss';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/lie-builder">
     <div className="app">
       <Header />
       <div className="motes motes--back"/>
       <div className="motes motes--mid"/>
       <Switch>
             <Route path="/liebrary" render={() => <Liebrary/>}/>
-            <Route exact path="/lie-builder" render={() => <Lie />}/>
+            <Route exact path="/" render={() => <Lie />}/>
         </Switch>
       <div className="motes motes--front"/>
       <Footer />

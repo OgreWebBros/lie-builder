@@ -1,8 +1,7 @@
 .header {
   padding: var(--spacing-small);
   background-color: var(--palette-black);
-  display: flex;
-  align-items: center;
+
   &__logo {
       fill: var(--theme-light);
       margin: 0 var(--spacing-small);
@@ -13,5 +12,10 @@
       font-size: 1.1em;
       
     }
+  }
+  &__link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
   }
 }
